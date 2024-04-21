@@ -9,14 +9,10 @@ public class TilaustenKasittely {
         this.hinnoittelija = hinnoittelija;
     }
 
-    public void käsittele(Tilaus tilaus) {
-
-        float alennusProsentti = hinnoittelija.getAlennusProsentti(
-                tilaus.getAsiakas(), tilaus.getTuote());
-        float alennusHinta = tilaus.getTuote().getHinta()
-                * (1 - (alennusProsentti / 100));
-        tilaus.getAsiakas().setSaldo(
-                tilaus.getAsiakas().getSaldo() - alennusHinta);
+    public void kasittele(Tilaus tilaus) {
+        float alennusProsentti = hinnoittelija.getAlennusProsentti(tilaus.getAsiakas(), tilaus.getTuote());
+        float alennusHinta = tilaus.getTuote().getHinta() * (1 - (alennusProsentti / 100));
+        tilaus.getAsiakas().setSaldo(tilaus.getAsiakas().getSaldo() - alennusHinta);
     }
 
 }
