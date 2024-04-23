@@ -24,10 +24,10 @@ public class TilaustenKasittely {
         float prosentti = hinnoittelija.getAlennusProsentti(asiakas, tuote);
 
         if (tuote.getHinta() >= 100) {
-            hinnoittelija.setAlennusProsentti(asiakas, prosentti + 5);
+            prosentti += 5;
+            hinnoittelija.setAlennusProsentti(asiakas, prosentti);
         }
 
-        prosentti = hinnoittelija.getAlennusProsentti(asiakas, tuote);
         float alennusHinta = tuote.getHinta() * (1 - (prosentti / 100));
         asiakas.setSaldo(asiakas.getSaldo() - alennusHinta);
         hinnoittelija.lopeta();
